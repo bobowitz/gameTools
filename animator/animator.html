@@ -29,8 +29,8 @@ function preload() {
     game.renderer.renderSession.roundPixels = true;  
     Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
-    game.load.spritesheet('sheet', 'assets/tileset.png', 24, 48);
-    game.load.image('sheetImage', 'assets/tileset.png');
+    game.load.spritesheet('sheet', 'tileset.png', 24, 48);
+    game.load.image('sheetImage', 'tileset.png');
 
 
 }
@@ -39,12 +39,12 @@ var tilesetSprite;
 var animations = [];
 
 function create() {
-    tilesetSprite = game.add.sprite(0, 48, 'sheetImage');
-    game.scale.setGameSize(tilesetSprite.width, tilesetSprite.height + 48);
+    tilesetSprite = game.add.sprite(24, 0, 'sheetImage');
+    game.scale.setGameSize(24 + tilesetSprite.width, tilesetSprite.height );
 
     for(var i = 0; i < 16; i++){
-        var sprite = game.add.sprite(i*24, 0, 'sheet');
-        sprite.animations.add('default', [i, i+16, i+32, i+48], 8, true);
+        var sprite = game.add.sprite(0, i * 48, 'sheet');
+        sprite.animations.add('default', [i, 1+i, 2+i, 3+i, 4+i, 5+i, 6+i, 7+i], 15, true);
         sprite.animations.play('default');
         animations.push(sprite);
     }
